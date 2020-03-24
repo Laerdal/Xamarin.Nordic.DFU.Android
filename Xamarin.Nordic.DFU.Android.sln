@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Nordic.DFU.Android", "Xamarin.Nordic.DFU.Android\Xamarin.Nordic.DFU.Android.csproj", "{9E0DB645-4D6A-46BC-807B-9B2B8C59ABD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NordicFirmwareUpdater", "Sample\NordicFirmwareUpdater.csproj", "{D7042BDC-A8D9-4341-9075-F706CD40F5EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{D7042BDC-A8D9-4341-9075-F706CD40F5EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09C0A85A-8229-48CE-81F6-C6F3F1BDB40F}"
 	ProjectSection(SolutionItems) = preProject

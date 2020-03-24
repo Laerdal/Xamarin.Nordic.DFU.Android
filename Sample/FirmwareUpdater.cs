@@ -1,9 +1,9 @@
 ﻿using System;
 using Android.App;
 using Android.Util;
-using Java.Interop;
 using Java.Lang;
 using NO.Nordicsemi.Android.Dfu;
+using Sample.Nordic;
 
 namespace Sample
 {
@@ -12,23 +12,19 @@ namespace Sample
         private readonly DfuServiceInitiator _dfuServiceInitiator;
         private readonly DfuProgressListener _progressListener;
 
-        public FirmwareUpdater(string deviceAddress)
+        public FirmwareUpdater(string deviceAddress, Android.Net.Uri firmwareZipFile)
         {
-            //_context = Application.Context;
             _progressListener = new DfuProgressListener();
-            //_progressListener.DfuFailed += DfuFailed;
-            //_progressListener.DfuProgressChanged += DfuProgressChanged;
-            //_progressListener.DfuStateChanged += DfuStateChanged;
-            //_dfuServiceInitiator = new DfuServiceInitiator(deviceAddress);
             _dfuServiceInitiator.SetPacketsReceiptNotificationsEnabled(true);
             _dfuServiceInitiator.SetUnsafeExperimentalButtonlessServiceInSecureDfuEnabled(true);
             DfuServiceListenerHelper.RegisterProgressListener(Application.Context, _progressListener);
             _dfuServiceInitiator = new DfuServiceInitiator(deviceAddress);
+            _dfuServiceInitiator.SetZip(firmwareZipFile);
         }
 
         public void Start()
         {
-            _dfuServiceInitiator.Start(Application.Context, null);
+            _dfuServiceInitiator.Start(Application.Context, Class.FromType(typeof(DfuService)));
         }
 
         public void Dispose()
@@ -36,12 +32,6 @@ namespace Sample
             DfuServiceListenerHelper.UnregisterProgressListener(Application.Context, _progressListener);
         }
     }
-    /*
-    class DfuService : DfuBaseService
-    {
-        protected override Class NotificationTarget => throw new NotImplementedException();
-    }
-    */
 
     class DfuProgressListener : DfuProgressListenerAdapter
     {
@@ -51,7 +41,7 @@ namespace Sample
         }
         public override void OnProgressChanged(string deviceAddress, int percent, float speed, float avgSpeed, int currentPart, int partsTotal)
         {
-            Log.Info("Xamarin.Nordic.Dfu", $"Firmware update in progress: {percent} %");
+            Log.Info(GetType().Name, $"Firmware update in progress: {percent} %");
             base.OnProgressChanged(deviceAddress, percent, speed, avgSpeed, currentPart, partsTotal);
         }
     }

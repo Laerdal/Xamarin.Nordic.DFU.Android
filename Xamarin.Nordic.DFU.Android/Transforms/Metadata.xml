@@ -8,7 +8,5 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
    <remove-node path="/api/package[@name='no.nordicsemi.android.dfu.internal.manifest']"/>
-   <!-- 
-    <attr path="/api/package[@name='no.nordicsemi.android.dfu']/class[@name='DfuBaseService']" name="extends">mono.android.app.IntentService</attr>
-    -->
+   <attr path="/api/package[@name='no.nordicsemi.android.dfu']/class[@name='DfuBaseService']" name="extends">mono.android.app.IntentService</attr>
 </metadata>

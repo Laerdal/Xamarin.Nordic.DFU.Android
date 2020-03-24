@@ -28,6 +28,5 @@
         android:id="@+id/chooseDeviceButton"
         android:enabled="false"
         android:text="Choose device"/>
-
-
+    
 </RelativeLayout>
