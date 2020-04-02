@@ -20,7 +20,7 @@ namespace Sample
     [Activity(Label = "Select Device")]
     public class BLEDevicesActivity : ListActivity
     {
-        private List<BLEDevice> _devices = new List<BLEDevice>();
+        private HashSet<Guid> _seenDevices = new HashSet<Guid>();
         private ArrayAdapter<BLEDevice> _adapter;
 
         protected override void OnCreate (Bundle savedInstanceState)
@@ -60,9 +60,11 @@ namespace Sample
 
         private void FoundDevice(IScanResult scanResult)
         {
-            Log.Info(GetType().Name, $"Found device {scanResult.Device.Name}, Address: {scanResult.Device.Uuid}");
-            
-            _devices.Add(new BLEDevice(scanResult.Device));
+            var device = scanResult.Device;
+            Log.Info(GetType().Name, $"Found device {device.Name}, Address: {device.Uuid}");
+            if (_seenDevices.Contains(device.Uuid)) return;
+            _seenDevices.Add(device.Uuid);
+            _adapter.Add(new BLEDevice(device));
             _adapter.NotifyDataSetChanged();
         }
     }

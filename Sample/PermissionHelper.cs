@@ -25,7 +25,7 @@ namespace Sample
 
             if(!bluetoothAdapter.IsEnabled)
             {
-                activity.RunOnUiThread(async () =>
+                activity.RunOnUiThread(() =>
                 {
                     var builder = new AlertDialog.Builder(activity);
 

@@ -15,7 +15,8 @@ namespace Sample
 
         public override string ToString()
         {
-            return Name;
+            if (!string.IsNullOrEmpty(Name)) return Name;
+            return Address;
         }
     }
 }

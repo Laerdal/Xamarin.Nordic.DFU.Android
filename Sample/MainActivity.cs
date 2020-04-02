@@ -58,7 +58,6 @@ namespace Sample
             }
         }
 
-
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
