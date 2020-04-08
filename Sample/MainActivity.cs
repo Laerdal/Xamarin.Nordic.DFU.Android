@@ -2,9 +2,10 @@
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
-using Android.Support.V7.App;
 using Android.Widget;
+using AndroidX.AppCompat.App;
 
 namespace Sample
 {
@@ -16,8 +17,6 @@ namespace Sample
         public TaskCompletionSource<bool> BluetoothEnablePromise { get; set; }
         
         private static int FILE_SELECT_CODE = 301;
-
-        public static Android.Net.Uri CurrentFirmware;
 
         private TextView _fwTextView;
         private Button _chooseBleDeviceBtn;
@@ -77,8 +76,9 @@ namespace Sample
             {
                 if ((resultCode == Result.Ok) && (data != null))
                 {
-                    CurrentFirmware = data.Data;
-                    _fwTextView.Text = CurrentFirmware.LastPathSegment;
+                    CurrentParameters.CurrentFirmwareUri = data.Data;
+                    _fwTextView.Text = data.Data.LastPathSegment;
+                    _fwTextView.SetTextColor(Color.Black);
                     _chooseBleDeviceBtn.Enabled = true;
                 }
             }

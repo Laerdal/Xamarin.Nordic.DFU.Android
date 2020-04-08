@@ -1,11 +1,14 @@
 ﻿using System;
+using Android.App;
 using Java.Lang;
 using NO.Nordicsemi.Android.Dfu;
 
 namespace Sample.Nordic
 {
+    [Service]
     public class DfuService : DfuBaseService
     {
+
         public DfuService()
         {
         }

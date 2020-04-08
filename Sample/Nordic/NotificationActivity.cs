@@ -1,5 +1,6 @@
 ﻿using System;
 using Android.App;
+using Android.OS;
 
 namespace Sample.Nordic
 {
@@ -7,6 +8,12 @@ namespace Sample.Nordic
     {
         public NotificationActivity()
         {
+        }
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            Finish();
         }
     }
 }

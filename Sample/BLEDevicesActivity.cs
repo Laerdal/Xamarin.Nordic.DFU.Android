@@ -34,9 +34,12 @@ namespace Sample
 
             ListView.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs args)
             {
-                Toast.MakeText(Application, ((TextView)args.View).Text, ToastLength.Short).Show();
+                var device = _adapter.GetItem(args.Position);
+                CurrentParameters.CurrentDevice = device;
+                StartActivity(typeof(FirmwareUpdateActivity));
             };
         }
+
         protected override async void OnResume()
         {
             base.OnResume();
@@ -46,6 +49,12 @@ namespace Sample
             {
                 CrossBleAdapter.Current.Scan().Subscribe(FoundDevice);
             }
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            CrossBleAdapter.Current.StopScan();
         }
 
         private async Task<bool> CheckPermissionAndAskIfNeeded()
@@ -64,7 +73,7 @@ namespace Sample
             Log.Info(GetType().Name, $"Found device {device.Name}, Address: {device.Uuid}");
             if (_seenDevices.Contains(device.Uuid)) return;
             _seenDevices.Add(device.Uuid);
-            _adapter.Add(new BLEDevice(device));
+            _adapter.Add(new BLEDevice(device, scanResult.Rssi));
             _adapter.NotifyDataSetChanged();
         }
     }
