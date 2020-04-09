@@ -3,9 +3,8 @@ using Android.App;
 using Android.Util;
 using Java.Lang;
 using NO.Nordicsemi.Android.Dfu;
-using Sample.Nordic;
 
-namespace Sample
+namespace Sample.Nordic
 {
     public class FirmwareUpdater : IDisposable
     {
@@ -22,6 +21,7 @@ namespace Sample
             _dfuServiceInitiator = new DfuServiceInitiator(deviceAddress);
             _dfuServiceInitiator.SetPacketsReceiptNotificationsEnabled(true);
             _dfuServiceInitiator.SetDisableNotification(true);
+            // You need to tweak these parameters to match your device(SDK version and implementation details)
             _dfuServiceInitiator.SetUnsafeExperimentalButtonlessServiceInSecureDfuEnabled(true);
             DfuServiceListenerHelper.RegisterProgressListener(Application.Context, _progressListener);
             _dfuServiceInitiator.SetZip(firmwareZipFile);

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+<TextView
+    android:id="@+id/something"
+    android:layout_width="fill_parent"
+        android:padding="10dip"
+    android:layout_height="wrap_content"
+    android:text="Searching for devices advertising the Nordic DFU service(00001530-1212-etc).
+
+If your device is not found, try to put it in DFU-mode using Nrf Connect, or any proprietary method."/>
+<ListView
+    android:id="@android:id/list"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"/>
+</LinearLayout>

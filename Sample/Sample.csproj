@@ -63,14 +63,14 @@
     <Compile Include="PermissionHelper.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FirmwareUpdater.cs" />
     <Compile Include="Nordic\DfuService.cs" />
-    <Compile Include="Nordic\NotificationActivity.cs" />
+    <Compile Include="Nordic\DfuNotificationActivity.cs" />
     <Compile Include="BLEDevicesActivity.cs" />
     <Compile Include="FirmwareUpdateActivity.cs" />
     <Compile Include="CurrentParameters.cs" />
-    <Compile Include="FirmwareUpdateProgressListener.cs" />
     <Compile Include="Nordic\DfuLogListener.cs" />
+    <Compile Include="Nordic\DfuProgressListener.cs" />
+    <Compile Include="Nordic\FirmwareUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -115,6 +115,10 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\firmware_update.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ble_device_list.axml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

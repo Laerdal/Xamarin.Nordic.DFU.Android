@@ -1,5 +1,4 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Java.Lang;
 using NO.Nordicsemi.Android.Dfu;
 
@@ -24,6 +23,6 @@ namespace Sample.Nordic
             }
         }
 
-        protected override Class NotificationTarget => Class.FromType(typeof(NotificationActivity));
+        protected override Class NotificationTarget => Class.FromType(typeof(DfuNotificationActivity));
     }
 }

@@ -4,9 +4,9 @@ using Android.OS;
 
 namespace Sample.Nordic
 {
-    public class NotificationActivity : Activity
+    public class DfuNotificationActivity : Activity
     {
-        public NotificationActivity()
+        public DfuNotificationActivity()
         {
         }
 

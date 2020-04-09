@@ -1,19 +1,12 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Util;
-using Android.Views;
 using Android.Widget;
 using Plugin.BluetoothLE;
-using Xamarin.Essentials;
-using Adapter = Android.Widget.Adapter;
 
 namespace Sample
 {
@@ -23,9 +16,13 @@ namespace Sample
         private HashSet<Guid> _seenDevices = new HashSet<Guid>();
         private ArrayAdapter<BLEDevice> _adapter;
 
+        // This is the default ID for the Nordic DFU BLE service:
+        public static Guid NORDIC_DFU_SERVICE_ID = Guid.Parse("00001530-1212-EFDE-1523-785FEABCD123");
+
         protected override void OnCreate (Bundle savedInstanceState)
         {
             base.OnCreate (savedInstanceState);
+            SetContentView(Resource.Layout.ble_device_list);
 
             _adapter = new ArrayAdapter<BLEDevice> (this, Resource.Layout.ble_device);
 
@@ -38,16 +35,24 @@ namespace Sample
                 CurrentParameters.CurrentDevice = device;
                 StartActivity(typeof(FirmwareUpdateActivity));
             };
+
         }
 
         protected override async void OnResume()
         {
             base.OnResume();
+            _adapter.Clear();
+            _adapter.NotifyDataSetChanged();
+            _seenDevices.Clear();
 
             var bleReady = await CheckPermissionAndAskIfNeeded();
             if (bleReady)
             {
-                CrossBleAdapter.Current.Scan().Subscribe(FoundDevice);
+                var scanConfig = new ScanConfig
+                {
+                    ServiceUuids = new List<Guid> { NORDIC_DFU_SERVICE_ID }
+                };
+                CrossBleAdapter.Current.Scan(scanConfig).Subscribe(FoundDevice);
             }
         }
 
