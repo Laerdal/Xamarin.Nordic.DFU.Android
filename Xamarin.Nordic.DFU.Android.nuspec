@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>xamarin.nordic.dfu.android</id>
+    <version>1.0.0</version>
+	<title>Nordic OTA DFU for Xamarin.Android</title>
+    <authors>Laerdal Medical</authors>
+    <owners>Laerdal Medical</owners>
+    <icon>images/icon.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+Enable over the air(OTA) device firmware update(DFU) for Nordic devices using Android and Bluetooth Low Energy(BLE).
+
+This nuget is just a binding library for this native Android library: https://github.com/NordicSemiconductor/Android-DFU-Library
+
+The binding library supports Android version 5.0 and upwards. Version of the Nordic library embedded is 1.10.1.
+    </description>
+
+    <releaseNotes></releaseNotes>
+
+    <copyright>Copyright Laerdal Medical 2020</copyright>
+
+    <repository type="git" url="https://github.com/Laerdal/Xamarin.Nordic.DFU.Android"/>
+    <projectUrl>https://github.com/Laerdal/Xamarin.Nordic.DFU.Android</projectUrl>
+    <license type="expression">MIT</license>
+    <tags>Xamarin Nordic DFU Android</tags>
+
+    <dependencies>
+        <dependency id="Xamarin.AndroidX.Annotation" version="1.1.0" />
+        <dependency id="Xamarin.AndroidX.Core" version="1.2.0" />
+        <dependency id="Xamarin.AndroidX.LocalBroadcastManager" version="1.0.0" />
+    </dependencies>
+
+  </metadata>
+
+  <files>
+    <!-- Cross-platform reference assemblies -->
+    <!-- iOS reference assemblies -->
+	<file src="Xamarin.Nordic.DFU.Android/bin/Release/Xamarin.Nordic.DFU.Android.dll" target="lib\MonoAndroid9" />
+    <file src="icon.png" target="images\"/>
+  </files>
+
+</package>

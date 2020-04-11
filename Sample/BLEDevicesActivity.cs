@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Android.App;
 using Android.OS;
@@ -15,9 +16,6 @@ namespace Sample
     {
         private HashSet<Guid> _seenDevices = new HashSet<Guid>();
         private ArrayAdapter<BLEDevice> _adapter;
-
-        // This is the default ID for the Nordic DFU BLE service:
-        public static Guid NORDIC_DFU_SERVICE_ID = Guid.Parse("00001530-1212-EFDE-1523-785FEABCD123");
 
         protected override void OnCreate (Bundle savedInstanceState)
         {
@@ -48,11 +46,7 @@ namespace Sample
             var bleReady = await CheckPermissionAndAskIfNeeded();
             if (bleReady)
             {
-                var scanConfig = new ScanConfig
-                {
-                    ServiceUuids = new List<Guid> { NORDIC_DFU_SERVICE_ID }
-                };
-                CrossBleAdapter.Current.Scan(scanConfig).Subscribe(FoundDevice);
+                CrossBleAdapter.Current.Scan().Subscribe(FoundDevice);
             }
         }
 
