@@ -20,7 +20,8 @@ The binding library supports Android version 5.0 and upwards. Version of the Nor
 
     <copyright>Copyright Laerdal Medical 2020</copyright>
 
-    <repository type="git" url="https://github.com/Laerdal/Xamarin.Nordic.DFU.Android"/>
+    <repository type="git" url="https://github.com/Laerdal/Xamarin.Nordic.DFU.Android"
+        commit="3487814cf18eb526e510f7a5052079fd21817d5a"/>
     <projectUrl>https://github.com/Laerdal/Xamarin.Nordic.DFU.Android</projectUrl>
     <license type="expression">MIT</license>
     <tags>Xamarin Nordic DFU Android</tags>
