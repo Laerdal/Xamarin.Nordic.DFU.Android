@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>xamarin.nordic.dfu.android</id>
-    <version>1.0.0</version>
+    <id>Xamarin.Nordic.DFU.Android</id>
+    <version>1.0.1</version>
 	<title>Nordic OTA DFU for Xamarin.Android</title>
     <authors>Laerdal Medical</authors>
     <owners>Laerdal Medical</owners>
