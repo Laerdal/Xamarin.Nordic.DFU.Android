@@ -2,8 +2,8 @@
 <package>
   <metadata>
     <id>Xamarin.Nordic.DFU.Android</id>
-    <version>1.0.1</version>
-	<title>Nordic OTA DFU for Xamarin.Android</title>
+    <version>1.0.2</version>
+    <title>Nordic OTA DFU for Xamarin.Android</title>
     <authors>Laerdal Medical</authors>
     <owners>Laerdal Medical</owners>
     <icon>images/icon.png</icon>
@@ -35,10 +35,8 @@ The binding library supports Android version 5.0 and upwards. Version of the Nor
   </metadata>
 
   <files>
-    <!-- Cross-platform reference assemblies -->
-    <!-- iOS reference assemblies -->
-	<file src="Xamarin.Nordic.DFU.Android/bin/Release/Xamarin.Nordic.DFU.Android.dll" target="lib\MonoAndroid9" />
-    <file src="icon.png" target="images\"/>
+	<file src="Xamarin.Nordic.DFU.Android/bin/Release/*" target="lib\MonoAndroid" />
+    	<file src="icon.png" target="images\"/>
   </files>
 
 </package>
